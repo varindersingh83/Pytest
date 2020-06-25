@@ -8,12 +8,13 @@ from selenium.webdriver.common.keys import Keys
 class HackerNewsSearchTest(unittest.TestCase):
 
     def setUp(self):
-        caps = {'browserName': os.getenv('BROWSER', 'chrome'),
-                'tz': 'America/Montreal'}
-        self.browser = webdriver.Remote(
-            command_executor='http://localhost:4444/wd/hub',
-            desired_capabilities=caps
-        )
+        # caps = {'browserName': os.getenv('BROWSER', 'chrome'),
+        #         'tz': 'America/Montreal'}
+        # self.browser = webdriver.Remote(
+        #     command_executor='http://localhost:4444/wd/hub',
+        #     desired_capabilities=caps
+        # )
+        self.browser = webdriver.Chrome()
 
     def test_hackernews_search_for_testdrivenio(self):
         browser = self.browser
@@ -49,7 +50,8 @@ class HackerNewsSearchTest(unittest.TestCase):
         search_box.send_keys('?*^^%')
         search_box.send_keys(Keys.RETURN)
         time.sleep(3)  # simulate long running test
-        self.assertNotIn('<em>', browser.page_source)
+        self.assertNotIn('<div>', browser.page_source)
+        assert 2 == 1
 
     def tearDown(self):
         self.browser.quit()  # quit vs close?
