@@ -17,3 +17,11 @@ slack:
                         Set icon (a url) for a successful run. Overrides SLACK_SUCCESS_EMOJI
   --slack_failed_icon=SLACK_FAILED_ICON [default = None]
                         Set icon (a url) for a failed run. Overrides SLACK_FAILED_EMOJI
+
+
+pytest test_1.py \
+--slack_hook=https://hooks.slack.com/services/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 \
+--slack_channel=general \
+--slack_username=”V” \
+--slack_success_emoji=SLACK_SUCCESS_EMOJI \
+--slack_failed_emoji=SLACK_FAILED_EMOJI
