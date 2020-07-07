@@ -12,7 +12,7 @@ class TestHackerNewsSearch(object):
         caps = {'browserName': os.getenv('BROWSER', 'chrome'),
                 'tz': 'America/Montreal'}
         self.browser = webdriver.Remote(
-            command_executor='http://hub:4444/wd/hub',
+            command_executor='http://localhost:4444/wd/hub',
             desired_capabilities=caps
         )
 

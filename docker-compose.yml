@@ -7,64 +7,18 @@ services:
     # environment:
     #   -
 
-  chrome1:
+  chrome:
     image: selenium/node-chrome-debug
-    ports:
-      - '9001:5900'
     depends_on:
       - hub
     links:
       - hub
-    volumes:
-      - /dev/shm:/dev/shm
-    environment:
-      - HUB_PORT_4444_TCP_ADDR=hub
-      - HUB_PORT_4444_TCP_PORT=4444
-
-  chrome2:
-    image: selenium/node-chrome-debug
-    ports:
-      - '9002:5900'
-    depends_on:
-      - hub
-    links:
-      - hub
-    volumes:
-      - /dev/shm:/dev/shm
-    environment:
-      - HUB_PORT_4444_TCP_ADDR=hub
-      - HUB_PORT_4444_TCP_PORT=4444
-
-  chrome3:
-    image: selenium/node-chrome-debug
-    ports:
-      - '9003:5900'
-    depends_on:
-      - hub
-    links:
-      - hub
-    volumes:
-      - /dev/shm:/dev/shm
-    environment:
-      - HUB_PORT_4444_TCP_ADDR=hub
-      - HUB_PORT_4444_TCP_PORT=4444
-
-  chrome4:
-    image: selenium/node-chrome-debug
-    ports:
-      - '9004:5900'
-    depends_on:
-      - hub
-    links:
-      - hub
-    volumes:
-      - /dev/shm:/dev/shm
     environment:
       - HUB_PORT_4444_TCP_ADDR=hub
       - HUB_PORT_4444_TCP_PORT=4444
 
   tester:
-    image: tester/runner
+    image: test/runner
     build:
       context: ./
       dockerfile: tester.Dockerfile
@@ -72,4 +26,4 @@ services:
       - "./testcases:/testcases"
     command: tail -f /dev/null
     depends_on:
-      - chrome1
+      - chrome

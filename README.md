@@ -1,11 +1,22 @@
 # Pytest
 
-### - [ ] o start tester
+### - To start tester
 ```
-docker-compose up tester
+make prepare  # Default nodes count 4
+make prepare nodes=2
 ```
 
 ### To run tests
 ```
-docker-compose exec tester pytest testcases/test1.py
+make test
+```
+
+### To check containers status
+```
+make status
+```
+
+## To stop containers
+```
+make clean
 ```
